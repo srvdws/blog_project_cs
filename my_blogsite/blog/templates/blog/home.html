@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog Home</title>
-</head>
-<body>
+{% extends "blog/base.html" %}
+
+{% block content %}
+
     <h1>BLOG HOME</h1>
+    <br>
 
     {% for i in posts %}
-        <h2>{{posts.title}}</h2>
-        <p>By {{posts.author}} on {{posts.date_posted}}</p>
-        <p>{{posts.content}}</p>
+        <h2>{{i.title}}</h2>
+        <p>By {{i.author}} on {{i.date_posted}}</p>
+        <p>{{i.content}}</p>
     {% endfor %}
 
-</body>
-</html>
+{% endblock content %}
