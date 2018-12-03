@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Blog Home</title>
 </head>
 <body>
+    <h1>BLOG HOME</h1>
+
+    {% for i in posts %}
+        <h2>{{posts.title}}</h2>
+        <p>By {{posts.author}} on {{posts.date_posted}}</p>
+        <p>{{posts.content}}</p>
+    {% endfor %}
 
 </body>
 </html>
