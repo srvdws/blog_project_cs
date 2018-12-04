@@ -20,10 +20,10 @@ posts = [
 def home_view(request):
     context = {
         'posts': posts,
-        'title': 'Blogs'
+        'title': 'Home'
     }
     return render(request, 'blog/home.html', context)
 
 
 def about_view(request):
-    return render(request, 'blog/about.html', {'title' : 'About'})
+    return render(request, 'blog/about.html', {'title': 'About'})

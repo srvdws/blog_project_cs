@@ -1,33 +1,8 @@
-
-Skip to content
-
-    Pull requests
-    Issues
-    Marketplace
-    Explore
-
-    @srvdws
-
-181
-993
-
-    1,691
-
-CoreyMSchafer/code_snippets
-Code
-Issues 0
-Pull requests 3
-Projects 0
-Wiki
-Insights
-code_snippets/Django_Blog/snippets/main.css
-7d3d49b on 31 Aug
-@CoreyMSchafer CoreyMSchafer Added snippets
-85 lines (68 sloc) 1.1 KB
 body {
   background: #fafafa;
   color: #333333;
   margin-top: 5rem;
+  padding-top: 30px;
 }
 
 h1, h2, h3, h4, h5, h6 {
