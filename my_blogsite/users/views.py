@@ -1,20 +1,23 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from . import forms
 
 
 def register_view(request):
-    print('opened register page')
+
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        print('form is created')
+        form = forms.UserRegisterForm(request.POST)
         if form.is_valid():
-            print('form is valid')
+            form.save()
             username = form.cleaned_data.get('username')
-            print(username)
             messages.success(request, "Account Created for {}".format(username))
             return redirect('home_view')
+        else:
+            messages.warning(request, "Please ensure all information is correct")
+            form = forms.UserRegisterForm(request.POST)
+
     else:
-        form = UserCreationForm()
+        form = forms.UserRegisterForm()
 
     return render(request, 'users/register.html', {'form': form})
