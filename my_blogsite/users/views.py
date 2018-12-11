@@ -26,4 +26,8 @@ def register_view(request):
 
 @login_required
 def profile_view(request):
+
+    u_form = forms.UserUpdateForm()
+    p_form = forms.ProfileUpdateForm()
+
     return render(request, 'users/profile.html')
