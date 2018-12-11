@@ -27,7 +27,25 @@ def register_view(request):
 @login_required
 def profile_view(request):
 
-    u_form = forms.UserUpdateForm()
-    p_form = forms.ProfileUpdateForm()
+    if request.method == 'POST':
+        u_form = forms.UserUpdateForm(request.POST, instance = request.user)
+        p_form = forms.ProfileUpdateForm(request.POST, request.FILES, instance = request.user.profilemodel)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
 
-    return render(request, 'users/profile.html')
+            messages.success(request, "account updated")
+            return redirect('profile')
+        else:
+            u_form = forms.UserUpdateForm(instance=request.user)
+            p_form = forms.ProfileUpdateForm(instance=request.user.profilemodel)
+    else:
+        u_form = forms.UserUpdateForm(instance=request.user)
+        p_form = forms.ProfileUpdateForm(instance=request.user.profilemodel)
+
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+    }
+
+    return render(request, 'users/profile.html', context)
